@@ -70,6 +70,8 @@
       }
 
       a { color: inherit; text-decoration: none; }
+      .link { color: var(--accent); }
+      .link:hover { text-decoration: underline; }
       img { max-width: 100%; display: block; }
 
       /* Header */
@@ -86,15 +88,15 @@
       .brand { display: flex; align-items: center; gap: 12px; }
       .brand img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
       .brand strong { letter-spacing: .3px; }
-      nav ul { display: flex; list-style: none; gap: 18px; margin: 0; padding: 0; }
+      nav ul { display: flex; list-style: none; gap: 1px; margin: 0; padding: 0; }
       nav a { color: var(--muted); padding: 8px 10px; border-radius: 8px; transition: color .2s, background .2s, filter .2s; }
       nav a:hover { color: var(--text); background: rgba(255,255,255,.04); }
       .cta-btn { background: var(--accent); color: #081017; padding: 10px 14px; border-radius: 10px; font-weight: 700; box-shadow: var(--shadow); border: none; }
       .cta-btn:hover { color: #081017; background: #62dba9; filter: none; }
 
       /* Mobile nav */
-      .burger { display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 10px; align-items: center; justify-content: center; gap: 6px; background: var(--card); }
-      .burger span { width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .25s; }
+      .burger { display: none; width: 48px; height: 48px; border: none; border-radius: 0; align-items: center; justify-content: center; background: transparent; padding: 0; touch-action: manipulation; }
+      .burger img { width: 30px; height: 30px; display: block; filter: invert(1) brightness(1.2); }
       @media (max-width: 860px) {
         nav ul {
           display: none; position: absolute; top: 58px; left: 12px; right: 12px;
@@ -151,11 +153,15 @@
         .hero::before { content: none; }
         .hero .bg-video { display: block; }
         .onas-section{ padding-top: 20px;}
+        /* Keep hero buttons in one row on mobile */
+        .hero .actions { flex-wrap: nowrap; gap: 8px; }
+        .hero .actions .btn { flex: 1 1 0; min-width: 0; padding: 10px 8px; font-size: 14px; white-space: nowrap; }
       }
 
       /* About */
       .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; align-items: center; }
       .about .card { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid var(--border); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); }
+      .steps { display: grid; gap: 14px; }
       .about figure { overflow: hidden; border-radius: 16px; border: 1px solid var(--border); }
       .about img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); transition: transform .6s ease; }
       .about figure:hover img { transform: scale(1.06); }
@@ -167,8 +173,20 @@
       .tile:hover { transform: translateY(-4px); background: #0f1622; border-color: #293242; }
       .tile h3 { margin: 6px 0 6px; font-size: 18px; }
       .tile p { margin: 0; color: var(--muted); }
+      /* Section visuals */
+      .section-image { overflow: hidden; border-radius: 16px; border: 1px solid var(--border); margin: 14px 0 18px; aspect-ratio: 16 / 9; }
+      .section-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
       @media (max-width: 980px) { .offer { grid-template-columns: 1fr 1fr; } }
       @media (max-width: 640px) { .offer { grid-template-columns: 1fr; } }
+
+      /* Schedule (Grafik) */
+      .schedule-embed { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); margin: 12px 0 28px; }
+      .schedule-embed iframe { width: 100%; height: 740px; border: 0; display: block; background: #0f1622; }
+      @media (max-width: 720px) {
+        /* Extra breathing room around the schedule on mobile */
+        #grafik { padding: 64px 20px 96px; }
+        .schedule-embed { margin-top: 18px; margin-bottom: 72px; margin-left: clamp(18px, 8vw, 48px); margin-right: clamp(18px, 8vw, 48px); }
+      }
 
       /* Pricing */
       .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
@@ -256,11 +274,15 @@
         </a>
         <nav>
           <button class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu">
-            <span></span><span></span><span></span>
+            <img src="images/burger.svg" alt="" aria-hidden="true" />
           </button>
           <ul id="menu">
             <li><a href="#onas">O nas</a></li>
-            <li><a href="#treningi">Treningi</a></li>
+            <li><a href="#treningi-personalne">Treningi personalne</a></li>
+            <li><a href="#treningi-grupowe">Treningi grupowe</a></li>
+            <li><a href="#treningi-specjalne">Treningi specjalne</a></li>
+            <li><a href="#jak-zaczac">Jak zacząć</a></li>
+            <li><a href="#grafik">Grafik</a></li>
             <li><a href="#cennik">Cennik</a></li>
             <li><a href="#trenerzy">Trenerzy</a></li>
             <li><a href="#galeria">Galeria</a></li>
@@ -277,12 +299,13 @@
         </video>
         <div class="container">
           <div class="reveal in" style="transition-delay:.05s">
-            <h1>ETERNIA CrossFit</h1>
-            <h2> Wrocław - Popowice</h2>
+            <h1>E T E R N I A</h1>
+            <h2> Treningi Wrocław - Popowice</h2>
             <p>Trenuj mądrze i bezpiecznie w klubie, który łączy ludzi. Zajęcia dla początkujących i zaawansowanych, świetna atmosfera i realne efekty.</p>
             <div class="actions">
               <a class="btn primary" href="#kontakt">Zapisz się</a>
               <a class="btn" href="#onas">Poznaj nas</a>
+              <a class="btn" href="#jak-zaczac">Jak zacząć</a>
             </div>
           </div>
         </div>
@@ -308,9 +331,39 @@
         </div>
       </section>
 
-      <section id="treningi">
+      
+
+      <!-- Treningi personalne -->
+      <section id="treningi-personalne">
         <div class="container">
-          <div class="section-head reveal"><h2>Treningi</h2><p>Funkcjonalne, różnorodne, dostosowane do Twojego poziomu.</p></div>
+          <div class="section-head reveal"><h2>Treningi personalne</h2><p>Indywidualny plan, pełna uwaga trenera i szybkie postępy.</p></div>
+          <figure class="section-image reveal" style="transition-delay:.05s">
+            <img src="images/trening_personalny.jpg" alt="Trening personalny w Eternii – indywidualna praca 1:1" loading="lazy" />
+          </figure>
+          <div class="offer">
+            <article class="tile reveal" style="transition-delay:.05s">
+              <h3>1:1 – trening personalny</h3>
+              <p>Sesje dopasowane do Twojego celu: sylwetka, siła, kondycja, zdrowy kręgosłup. Analiza ruchu i progres co tydzień.</p>
+            </article>
+            <article class="tile reveal" style="transition-delay:.1s">
+              <h3>Plan + wsparcie</h3>
+              <p>Indywidualny program, kontrola techniki, zalecenia regeneracyjne i żywieniowe. Stały kontakt z trenerem.</p>
+            </article>
+            <article class="tile reveal" style="transition-delay:.1s">
+              <h3>Indywidualna opieka</h3>
+              <p>Indywidualny program, kontrola techniki, zalecenia regeneracyjne i żywieniowe. Stały kontakt z trenerem.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Treningi grupowe -->
+      <section id="treningi-grupowe">
+        <div class="container">
+          <div class="section-head reveal"><h2>Treningi grupowe</h2><p>Funkcjonalne, różnorodne, dostosowane do Twojego poziomu.</p></div>
+          <figure class="section-image reveal" style="transition-delay:.05s">
+            <img src="images/trening_grupowy.png" alt="Trening grupowy w Eternii – energia i współpraca" loading="lazy" />
+          </figure>
           <div class="offer">
             <article class="tile reveal" style="transition-delay:.05s">
               <h3>WOD – trening dnia</h3>
@@ -320,10 +373,75 @@
               <h3>Fundamenty</h3>
               <p>Cykl dla początkujących. Nauka techniki, oddechu i podstaw bezpiecznego poruszania się w boxie.</p>
             </article>
-            <article class="tile reveal" style="transition-delay:.15s">
-              <h3>Trening personalny</h3>
-              <p>Indywidualny plan skrojony pod Twój cel: sylwetka, siła, kondycja lub powrót do formy.</p>
+            <article class="tile reveal" style="transition-delay:.1s">
+              <h3>Motywacja grupowa</h3>
+              <p>Motywacja ćwiczeń w grupie</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Treningi specjalne -->
+      <section id="treningi-specjalne">
+        <div class="container">
+          <div class="section-head reveal"><h2>Treningi specjalne</h2><p>Treningi personalne dla osób w spektrum autyzmu</p></div>
+          <div class="offer">
+            <article class="tile reveal" style="transition-delay:.05s">
+              <h3>Mobility / Zdrowy kręgosłup</h3>
+              <p>Popraw mobilność, stabilność i komfort na co dzień.</p>
+            </article>
+            <article class="tile reveal" style="transition-delay:.1s">
+              <h3>Przygotowanie motoryczne</h3>
+              <p>Siła, szybkość i prewencja urazów dla sportowców amatorów.</p>
+            </article>
+            <article class="tile reveal" style="transition-delay:.15s">
+              <h3>Cross Teens</h3>
+              <p>Bezpieczny, rozwijający trening dla młodzieży 12–17 lat.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Jak zacząć -->
+      <section id="jak-zaczac">
+        <div class="container">
+          <div class="section-head reveal"><h2>Jak zacząć</h2><p>Prosty plan wejścia do świata Cross Trainingu.</p></div>
+          <div class="about">
+            <div class="steps">
+              <article class="tile reveal" style="transition-delay:.05s">
+                <h3>START UP — w pigułce</h3>
+                <p>Aby zacząć Cross Training, przejdziesz cykl <strong>START UP</strong>. Wprowadzi Cię on w podstawy, zbuduje fundament i przygotuje do zajęć <a class="link" href="#treningi-grupowe">WOD</a>.</p>
+                <p>Start Up jest dla osób bez doświadczenia. Nauczysz się techniki, zasad i bezpiecznego poruszania.</p>
+                <p>Nie musisz być „w formie” — wszystko zbudujemy stopniowo. Rekomendujemy 2–3 treningi tygodniowo i min. 24 h przerwy na regenerację.</p>
+                <p>Brak czasu? Wybierz <a class="link" href="#treningi-personalne">treningi personalne</a> wprowadzające — dopasujemy terminy.</p>
+              </article>
+              <article class="tile reveal" style="transition-delay:.1s">
+                <h3>Jak się zapisać</h3>
+                <ul>
+                  <li>zadzwoń/napisz i wybierz termin z <a class="link" href="#kontakt">grafiku</a> lub użyj <a class="link" href="#kontakt">formularza zapisów online</a></li>
+                  <li>przyjdź ~20 min wcześniej: wykup karnet i poznaj zasady klubu</li>
+                </ul>
+                <p>Następnie systematycznie przychodź na zajęcia — min. 6 spotkań, by ukończyć Start Up.</p>
+              </article>
+              <article class="tile reveal" style="transition-delay:.15s">
+                <h3>Masz już doświadczenie?</h3>
+                <p>Omijasz START UP i zapisujesz się od razu na <a class="link" href="#treningi-grupowe">WOD</a>.</p>
+                <p>Karnet kupisz w klubie lub zdalnie po kontakcie. W razie pytań — <a class="link" href="tel:+48791343483">791 343 483</a>, <a class="link" href="mailto:info@eternia.com.pl">info@eternia.com.pl</a> lub sekcja <a class="link" href="#kontakt">FAQ</a>.</p>
+              </article>
+            </div>
+            <figure class="reveal" style="transition-delay:.1s">
+              <img src="images/2.jpg" alt="Jak zacząć w Eternii – zajęcia wprowadzające START UP" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grafik -->
+      <section id="grafik">
+        <div class="container">
+          <div class="section-head reveal"><h2>Grafik</h2><p>Aktualny harmonogram zajęć w Eternii.</p></div>
+          <div class="schedule-embed reveal" style="transition-delay:.05s">
+            <iframe src="https://wod.guru/schedule/eternia" loading="lazy" title="Grafik zajęć Eternia"></iframe>
           </div>
         </div>
       </section>
@@ -360,22 +478,6 @@
               <ul class="features">
                 <li>treningi w tygodniu o 6:30 i 7:30</li>
                 <li>treningi OPEN GYM</li>
-              </ul>
-            </article>
-
-            <article class="plan reveal" style="transition-delay:.2s">
-              <div class="head"><h3>TEENS</h3></div>
-              <div class="ribbon"><span class="price">30<small> zł</small></span></div>
-              <ul class="features">
-                <li>jednorazowy wstęp</li>
-              </ul>
-            </article>
-
-            <article class="plan reveal" style="transition-delay:.25s">
-              <div class="head"><h3>MOBILITY / ZDROWY KRĘGOSŁUP</h3></div>
-              <div class="ribbon"><span class="price">180<small> zł</small></span><span class="per">za miesiąc</span></div>
-              <ul class="features">
-                <li>treningi MOBILITY / ZDROWY KRĘGOSŁUP</li>
               </ul>
             </article>
 
@@ -454,21 +556,6 @@
             <figure class="reveal" style="transition-delay:.1s"><img src="images/2.jpg" alt="Praca w grupie – zdjęcie 2" loading="lazy" /></figure>
             <figure class="reveal" style="transition-delay:.15s"><img src="images/3.jpg" alt="Sprzęt i strefa ciężarowa – zdjęcie 3" loading="lazy" /></figure>
             <figure class="reveal" style="transition-delay:.2s"><img src="images/4.jpg" alt="Atmosfera w klubie – zdjęcie 4" loading="lazy" /></figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="container">
-        <div class="cta-band reveal">
-          <div class="inner">
-            <div>
-              <h3>Dołącz do Eternii</h3>
-              <p>Pierwszy krok jest najważniejszy. Zostaw kontakt, a pomożemy Ci zacząć.</p>
-            </div>
-            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
-              <a class="btn primary" href="#kontakt">Umów trening próbny</a>
-              <a class="btn" href="tel:+48791343483">Zadzwoń: 791 343 483</a>
-            </div>
           </div>
         </div>
       </section>

@@ -107,6 +107,8 @@
         min-height: 72vh; display: grid; place-items: center; text-align: center;
         padding: 60px 20px 40px;
       }
+      /* Background video element (mobile only) */
+      .hero .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: -3; filter: saturate(0.95) contrast(1.05) brightness(.6); }
       .hero::before {
         content: ""; position: absolute; inset: 0; z-index: -2;
         background-image: url('images/group.png');
@@ -137,6 +139,12 @@
       .section-head { margin-bottom: 26px; }
       .section-head h2 { font-size: clamp(26px, 4.5vw, 40px); margin: 0 0 8px; }
       .section-head p { color: var(--muted); margin: 0; }
+
+      /* Use video background only on mobile */
+      @media (max-width: 720px) {
+        .hero::before { content: none; }
+        .hero .bg-video { display: block; }
+      }
 
       /* About */
       .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; align-items: center; }
@@ -257,6 +265,9 @@
 
     <main id="top">
       <section class="hero">
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="images/group.png" aria-hidden="true">
+          <source src="images/background_video.mp4" type="video/mp4" />
+        </video>
         <div class="container">
           <div class="reveal in" style="transition-delay:.05s">
             <h1>Eternia – CrossFit Wrocław</h1>

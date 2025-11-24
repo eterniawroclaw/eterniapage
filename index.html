@@ -10,8 +10,7 @@
     <meta name="theme-color" content="#0b0e12" />
 
     <!-- Google Analytics (GA4) -->
-    <!-- Replace G-XXXXXXXXXX with your GA4 Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYKEJQ5XMM"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} // minimal GA4 init
@@ -698,6 +697,73 @@
 
       // Year
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // GA4 event helper + click tracking
+      function trackEvent(name, params = {}) {
+        try {
+          if (typeof gtag === 'function') {
+            gtag('event', name, params);
+          } else if (window.dataLayer) {
+            window.dataLayer.push({ event: name, ...params });
+          }
+        } catch (_) { /* no-op */ }
+      }
+
+      // Helper to safely get text
+      const txt = (el) => (el?.textContent || '').trim();
+      const slugify = (s) => (s || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove diacritics
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+
+      // 1) Hero CTAs -> CTA_{button_name}
+      document.querySelector('a.btn.primary[href="#kontakt"]')?.addEventListener('click', () => {
+        const label = 'Zapisz się';
+        trackEvent(`CTA_${slugify(label)}`, { location: 'hero', label, link_url: '#kontakt' });
+      });
+      document.querySelector('a.btn[href="#onas"]')?.addEventListener('click', () => {
+        const label = 'Poznaj nas';
+        trackEvent(`CTA_${slugify(label)}`, { location: 'hero', label, link_url: '#onas' });
+      });
+      document.querySelector('a.btn[href="#jak-zaczac"]')?.addEventListener('click', () => {
+        const label = 'Jak zacząć';
+        trackEvent(`CTA_${slugify(label)}`, { location: 'hero', label, link_url: '#jak-zaczac' });
+      });
+
+      // 2) Nav menu clicks (hash links) -> menu_{button_name}
+      document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+        a.addEventListener('click', () => {
+          const target = a.getAttribute('href') || '';
+          const label = txt(a);
+          const name = `menu_${slugify(label)}`;
+          trackEvent(name, { target, link_text: label });
+        });
+      });
+
+      // 3) Contact links
+      document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+        a.addEventListener('click', () => {
+          trackEvent('contact_click', { method: 'phone', link_url: a.getAttribute('href') });
+        });
+      });
+      document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+        a.addEventListener('click', () => {
+          trackEvent('contact_click', { method: 'email', link_url: a.getAttribute('href') });
+        });
+      });
+
+      // 4) Social links
+      document.querySelectorAll('a.instagram').forEach(a => {
+        a.addEventListener('click', () => {
+          trackEvent('social_click', { platform: 'instagram', link_url: a.href });
+        });
+      });
+      document.querySelectorAll('a.facebook').forEach(a => {
+        a.addEventListener('click', () => {
+          trackEvent('social_click', { platform: 'facebook', link_url: a.href });
+        });
+      });
     </script>
   </body>
   </html>

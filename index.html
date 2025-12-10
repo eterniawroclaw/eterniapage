@@ -275,6 +275,42 @@
       @media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
       @media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
 
+      /* Floating CTA (mobile) */
+      .floating-cta {
+        position: fixed;
+        left: 50%;
+        bottom: 40px;
+        transform: translateX(-50%);
+        width: 80%;
+        max-width: 480px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 18px;
+        background: linear-gradient(135deg, #7df3c0, #62dba9);
+        color: #081017;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .4px;
+        border-radius: 16px;
+        border: none;
+        box-shadow: 0 12px 30px rgba(0,0,0,.35);
+        z-index: 1200;
+      }
+      .floating-cta:hover { color: #081017; filter: brightness(1.05); }
+      @media (max-width: 760px) { .floating-cta { display: inline-flex; } }
+      @media (min-width: 761px) {
+        .floating-cta {
+          display: inline-flex;
+          left: auto;
+          right: 28px;
+          transform: none;
+          width: auto;
+          max-width: none;
+          padding: 14px 20px;
+        }
+      }
+
       /* CTA band */
       .cta-band { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: url('images/old/3.jpg') center/cover no-repeat; box-shadow: var(--shadow); }
       .cta-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,16,23,.55) 0%, rgba(8,16,23,.85) 100%); z-index: 0; }
@@ -883,6 +919,8 @@
         </div>
       </section>
     </main>
+
+    <a class="floating-cta" href="#kontakt" aria-label="Zapisz się na trening">Zapisz się</a>
 
     <footer>
       <div class="foot">

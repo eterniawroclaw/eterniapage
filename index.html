@@ -196,6 +196,24 @@
       .about figure:hover img { transform: scale(1.06); }
       @media (max-width: 900px) { .about { grid-template-columns: 1fr; } }
 
+      /* Reviews */
+      .reviews { margin-top: 20px; border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005)); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+      .reviews-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+      .reviews-head h3 { margin: 4px 0 2px; }
+      .reviews-head p { margin: 0; color: var(--muted); }
+      .reviews-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(125,243,192,.12); border: 1px solid rgba(125,243,192,.4); color: var(--accent); font-weight: 800; letter-spacing: .3px; text-transform: uppercase; font-size: 12px; }
+      .reviews-score { display: grid; gap: 2px; text-align: right; }
+      .reviews-score .number { font-size: 30px; font-weight: 900; line-height: 1; }
+      .reviews-score small { color: var(--muted); }
+      .review-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 320px); gap: 12px; overflow-x: auto; padding: 4px 4px 10px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+      .review-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: #101722; scroll-snap-align: start; box-shadow: var(--shadow); }
+      .review-card p { margin: 0 0 10px; color: var(--muted); }
+      .review-card strong { display: block; }
+      .review-nav { position: absolute; right: 10px; top: 12px; display: flex; gap: 6px; }
+      .review-nav button { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); cursor: pointer; }
+      .review-nav button:hover { border-color: rgba(125,243,192,.6); color: var(--accent); }
+      @media (max-width: 520px) { .review-track { grid-auto-columns: minmax(240px, 90%); } }
+
       /* Offer */
       .offer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .tile { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; transition: transform .25s, background .25s, border-color .25s; box-shadow: var(--shadow); }
@@ -418,6 +436,48 @@
             <figure class="reveal" style="transition-delay:.1s">
               <img src="images/1.jpeg" alt="Przestrzeń treningowa Eternia – box CF" loading="lazy" />
             </figure>
+          </div>
+          <div class="reviews reveal" style="transition-delay:.15s">
+              <div class="reviews-head">
+                <div>
+                  <a class="reviews-badge" href="https://maps.app.goo.gl/jK32jbr4RkRur22m6" target="_blank" rel="noopener">Google reviews</a>
+                  <h3>Ocena 4.9 / 5</h3>
+                  <p>113 opinii – dziękujemy za zaufanie!</p>
+                </div>
+                <div class="reviews-score" aria-label="Średnia ocena 4.9 na 5 na podstawie 113 opinii">
+                  <span class="number">4.9</span>
+                </div>
+              </div>
+            <div class="review-nav" aria-hidden="true">
+              <button type="button" class="review-prev" aria-label="Poprzednia opinia">‹</button>
+              <button type="button" class="review-next" aria-label="Następna opinia">›</button>
+            </div>
+            <div class="review-track">
+              <article class="review-card">
+                <p>Super treningi! Trener Mateusz ma super podejście do uczestników. Skupia się zarówno na rozwoju fizycznym jak i odpowiedniej motywacji.</p>
+                <strong>— Bartosz</strong>
+              </article>
+              <article class="review-card">
+                <p>Super miejsce, niezależnie od sprawności fizycznej, wieku i stopnia zaawansowania. Fantastyczna atmosfera sprawia! Serdecznie polecam!</p>
+                <strong>— Karolina</strong>
+              </article>
+              <article class="review-card">
+                <p>Bardzo polecam Eternie osobom, które dopiero zaczynają przygodę z crossfitem. Ja trafiłam przypadkiem, a zostanę na długo. Super ekipa i atmosfera.</p>
+                <strong>— Ola</strong>
+              </article>
+              <article class="review-card">
+                <p>Grafik dopasowany do pracy, a trenerzy pilnują, żeby każdy robił postęp w swoim tempie.</p>
+                <strong>— Łukasz</strong>
+              </article>
+              <article class="review-card">
+                <p>Trener tak super ze sie w nim zakochałam</p>
+                <strong>— Sławka</strong>
+              </article>
+              <article class="review-card">
+                <p>Przyjazna społeczność, zero spiny. Widziałem poprawę mobilności i kondycji.</p>
+                <strong>— Tomek</strong>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -1089,6 +1149,19 @@
           trackEvent('social_click', { platform: 'facebook', link_url: a.href });
         });
       });
+
+      // Review carousel controls
+      const reviewTrack = document.querySelector('.review-track');
+      const reviewPrev = document.querySelector('.review-prev');
+      const reviewNext = document.querySelector('.review-next');
+      const scrollReviews = (dir) => {
+        if (!reviewTrack) return;
+        const card = reviewTrack.querySelector('.review-card');
+        const width = card ? card.getBoundingClientRect().width + 12 : 280;
+        reviewTrack.scrollBy({ left: dir * width, behavior: 'smooth' });
+      };
+      reviewPrev?.addEventListener('click', () => scrollReviews(-1));
+      reviewNext?.addEventListener('click', () => scrollReviews(1));
     </script>
   </body>
   </html>

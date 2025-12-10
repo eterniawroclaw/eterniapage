@@ -21,12 +21,12 @@
     <!-- Open Graph / Twitter -->
     <!-- Site icons (for Google favicon in Search) -->
     <!-- Prefer PNG/SVG 48x48+ later; using existing logo for now -->
-    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
-    <link rel="apple-touch-icon" href="/images/logo.jpg" />
+    <link rel="icon" type="image/jpeg" href="/images/old/logo.jpg" />
+    <link rel="apple-touch-icon" href="/images/old/logo.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Eternia – Trening Funkcjonalny Wrocław" />
     <meta property="og:description" content="Klub Trening Funkcjonalny we Wrocławiu. Dołącz do społeczności Eternia i trenuj mądrze." />
-    <meta property="og:image" content="images/group.png" />
+    <meta property="og:image" content="images/old/group.png" />
     <meta property="og:locale" content="pl_PL" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -38,11 +38,11 @@
         "name": "Eternia",
         "sport": "CrossFit",
         "image": [
-          "images/group.png",
-          "images/1.jpg",
-          "images/2.jpg",
-          "images/3.jpg",
-          "images/4.jpg"
+          "images/old/group.png",
+          "images/old/1.jpg",
+          "images/old/2.jpg",
+          "images/old/3.jpg",
+          "images/old/4.jpg"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -142,7 +142,7 @@
       .hero .bg-video-desktop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: -3; filter: saturate(0.95) contrast(1.05) brightness(.6); }
       .hero::before {
         content: ""; position: absolute; inset: 0; z-index: -2;
-        background-image: url('images/group.png');
+        background-image: url('images/old/group.png');
         background-position: center; background-size: cover; background-repeat: no-repeat; /* no fixed to avoid seams */
         /* slightly darker to improve text contrast */
         filter: saturate(0.95) contrast(1.05) brightness(.58);
@@ -202,6 +202,27 @@
       .tile:hover { transform: translateY(-4px); background: #0f1622; border-color: #293242; }
       .tile h3 { margin: 6px 0 6px; font-size: 18px; }
       .tile p { margin: 0; color: var(--muted); }
+
+      /* Training accordion */
+      .training-accordion { display: grid; gap: 14px; }
+      .training-card { border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005)); box-shadow: var(--shadow); overflow: hidden; }
+      .training-card.open { border-color: #2b3646; }
+      .training-toggle { width: 100%; background: none; border: none; color: inherit; text-align: left; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; }
+      .training-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .training-toggle h3 { margin: 0; font-size: 20px; letter-spacing: .3px; }
+      .training-toggle p { margin: 6px 0 0; color: var(--muted); }
+      .chevron { width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(125,243,192,.4); display: grid; place-items: center; background: rgba(125,243,192,.12); transition: transform .25s, background .25s, border-color .25s; }
+      .chevron svg { width: 16px; height: 16px; fill: var(--accent); }
+      .training-card.open .chevron { transform: rotate(180deg); background: rgba(125,243,192,.18); border-color: rgba(125,243,192,.6); }
+      .training-body { display: grid; gap: 14px; padding: 0 18px; max-height: 0; opacity: 0; overflow: hidden; border-top: 1px solid transparent; transition: max-height .3s ease, opacity .25s ease, padding .25s ease, border-color .25s ease; }
+      .training-card.open .training-body { max-height: 1400px; opacity: 1; padding: 0 18px 18px; border-top-color: var(--border); }
+      .training-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; align-items: center; }
+      .training-layout .section-image { margin: 0; }
+      .training-layout .section-image img { height: 100%; }
+      .training-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+      .training-card .tile { height: 100%; margin: 0; }
+      @media (max-width: 900px) { .training-layout { grid-template-columns: 1fr; } }
+
       /* Section visuals */
       .section-image { overflow: hidden; border-radius: 16px; border: 1px solid var(--border); margin: 14px 0 18px; aspect-ratio: 16 / 9; }
       .section-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -256,7 +277,7 @@
       @media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
 
       /* CTA band */
-      .cta-band { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: url('images/3.jpg') center/cover no-repeat; box-shadow: var(--shadow); }
+      .cta-band { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: url('images/old/3.jpg') center/cover no-repeat; box-shadow: var(--shadow); }
       .cta-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,16,23,.55) 0%, rgba(8,16,23,.85) 100%); z-index: 0; }
       .cta-band .inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.6fr .4fr; align-items: center; gap: 18px; }
       .cta-band h3 { margin: 0 0 6px; }
@@ -269,7 +290,7 @@
       }
       .contact .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
       .contact a.link { color: var(--accent); }
-      .map { min-height: 280px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; background: #0f1622 url('images/2.jpg') center/cover no-repeat; }
+      .map { min-height: 280px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; background: #0f1622 url('images/old/2.jpg') center/cover no-repeat; }
       @media (max-width: 920px) { .contact { grid-template-columns: 1fr; } }
 
       /* Prominent social links in Kontakt */
@@ -308,18 +329,16 @@
     <header class="site-header">
       <div class="nav">
         <a href="#top" class="brand" aria-label="Eternia – strona główna">
-          <img src="images/logo.jpg" alt="Logo Eternia" loading="eager" />
+          <img src="images/old/logo.jpg" alt="Logo Eternia" loading="eager" />
           <strong>Eternia</strong>
         </a>
         <nav>
           <button class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu">
-            <img src="images/burger.svg" alt="" aria-hidden="true" />
+            <img src="images/old/burger.svg" alt="" aria-hidden="true" />
           </button>
           <ul id="menu">
             <li><a href="#onas">O nas</a></li>
-            <li><a href="#treningi-personalne">Treningi personalne</a></li>
-            <li><a href="#treningi-grupowe">Treningi grupowe</a></li>
-            <li><a href="#treningi-specjalne">Treningi specjalne</a></li>
+            <li><a href="#treningi">Treningi</a></li>
             <li><a href="#jak-zaczac">Jak zacząć</a></li>
             <li><a href="#grafik">Grafik</a></li>
             <li><a href="#cennik">Cennik</a></li>
@@ -333,11 +352,11 @@
 
     <main id="top">
       <section class="hero">
-        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="images/group.png" aria-hidden="true">
-          <source src="images/background_video_2.mp4" type="video/mp4" />
+        <video class="bg-video" autoplay muted playsinline loop preload="metadata" poster="images/old/group.png" aria-hidden="true">
+          <source src="images/old/background_video_2.mp4" type="video/mp4" />
         </video>
-        <video class="bg-video-desktop" autoplay muted playsinline loop preload="metadata" poster="images/group.png" aria-hidden="true">
-          <source src="images/background_poziomy.mp4" type="video/mp4" />
+        <video class="bg-video-desktop" autoplay muted playsinline loop preload="metadata" poster="images/old/group.png" aria-hidden="true">
+          <source src="images/old/background_poziomy.mp4" type="video/mp4" />
         </video>
         <div class="container">
           <div class="reveal in" style="transition-delay:.05s">
@@ -367,7 +386,7 @@
               </ul>
             </div>
             <figure class="reveal" style="transition-delay:.1s">
-              <img src="images/1.jpg" alt="Przestrzeń treningowa Eternia – box CrossFit" loading="lazy" />
+              <img src="images/old/1.jpg" alt="Przestrzeń treningowa Eternia – box CrossFit" loading="lazy" />
             </figure>
           </div>
         </div>
@@ -375,70 +394,116 @@
 
       
 
-      <!-- Treningi personalne -->
-      <section id="treningi-personalne">
+      <section id="treningi">
         <div class="container">
-          <div class="section-head reveal"><h2>Treningi personalne</h2><p>Indywidualny plan, pełna uwaga trenera i szybkie postępy.</p></div>
-          <figure class="section-image reveal" style="transition-delay:.05s">
-            <img src="images/trening_personalny.jpg" alt="Trening personalny w Eternii – indywidualna praca 1:1" loading="lazy" />
-          </figure>
-          <div class="offer">
-            <article class="tile reveal" style="transition-delay:.05s">
-              <h3>1:1 – trening personalny</h3>
-              <p>Sesje dopasowane do Twojego celu: sylwetka, siła, kondycja, zdrowy kręgosłup. Analiza ruchu i progres co tydzień.</p>
+          <div class="section-head reveal"><h2>Treningi</h2><p>Wybierz format i rozwiń kafelek, by zobaczyć szczegóły oraz zdjęcia.</p></div>
+          <div class="training-accordion">
+            <article class="training-card reveal" id="treningi-personalne" style="transition-delay:.05s">
+              <button class="training-toggle" aria-expanded="false">
+                <div>
+                  <h3>Treningi personalne</h3>
+                  <p>Indywidualny plan, pełna uwaga trenera i szybkie postępy.</p>
+                </div>
+                <span class="chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6.3 9.3a1 1 0 011.4 0L12 13.6l4.3-4.3a1 1 0 111.4 1.4l-5 5a1 1 0 01-1.4 0l-5-5a1 1 0 010-1.4z"/></svg>
+                </span>
+              </button>
+              <div class="training-body">
+                <div class="training-layout">
+                  <div>
+                    <p>Sesje dopasowane do Twojego celu: sylwetka, siła, kondycja, zdrowy kręgosłup. Analiza ruchu i kontrola progresu co tydzień.</p>
+                    <div class="training-points">
+                      <article class="tile">
+                        <h3>1:1 – trening personalny</h3>
+                        <p>Pełne skupienie trenera i plan pod Twoją dyspozycyjność.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Plan + wsparcie</h3>
+                        <p>Program, korekta techniki, wskazówki regeneracyjne i żywieniowe.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Indywidualna opieka</h3>
+                        <p>Stały kontakt, dostosowanie obciążenia i wyznaczony tor postępów.</p>
+                      </article>
+                    </div>
+                  </div>
+                  <figure class="section-image">
+                    <img src="images/old/trening_personalny.jpg" alt="Trening personalny w Eternii – indywidualna praca 1:1" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
             </article>
-            <article class="tile reveal" style="transition-delay:.1s">
-              <h3>Plan + wsparcie</h3>
-              <p>Indywidualny program, kontrola techniki, zalecenia regeneracyjne i żywieniowe. Stały kontakt z trenerem.</p>
-            </article>
-            <article class="tile reveal" style="transition-delay:.1s">
-              <h3>Indywidualna opieka</h3>
-              <p>Indywidualny program, kontrola techniki, zalecenia regeneracyjne i żywieniowe. Stały kontakt z trenerem.</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <!-- Treningi grupowe -->
-      <section id="treningi-grupowe">
-        <div class="container">
-          <div class="section-head reveal"><h2>Treningi grupowe</h2><p>Funkcjonalne, różnorodne, dostosowane do Twojego poziomu.</p></div>
-          <figure class="section-image reveal" style="transition-delay:.05s">
-            <img src="images/trening_grupowy.png" alt="Trening grupowy w Eternii – energia i współpraca" loading="lazy" />
-          </figure>
-          <div class="offer">
-            <article class="tile reveal" style="transition-delay:.05s">
-              <h3>WOD – trening dnia</h3>
-              <p>Zajęcia grupowe łączące siłę, wytrzymałość i technikę. Skalujemy ćwiczenia dla każdego poziomu.</p>
+            <article class="training-card reveal" id="treningi-grupowe" style="transition-delay:.08s">
+              <button class="training-toggle" aria-expanded="false">
+                <div>
+                  <h3>Treningi grupowe</h3>
+                  <p>Funkcjonalne, różnorodne, dostosowane do Twojego poziomu.</p>
+                </div>
+                <span class="chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6.3 9.3a1 1 0 011.4 0L12 13.6l4.3-4.3a1 1 0 111.4 1.4l-5 5a1 1 0 01-1.4 0l-5-5a1 1 0 010-1.4z"/></svg>
+                </span>
+              </button>
+              <div class="training-body">
+                <div class="training-layout">
+                  <div>
+                    <p>Zajęcia łączące siłę, wytrzymałość i technikę. Skalujemy ćwiczenia dla każdej osoby w grupie, aby trening był bezpieczny i efektywny.</p>
+                    <div class="training-points">
+                      <article class="tile">
+                        <h3>WOD – trening dnia</h3>
+                        <p>Codzienny program łączący elementy siłowe, gimnastyczne i kondycyjne.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Fundamenty</h3>
+                        <p>Cykl dla początkujących — nauka podstaw, oddechu i bezpiecznego poruszania się w boxie.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Motywacja grupowa</h3>
+                        <p>Energia zespołu, wsparcie trenera i jasny cel na każdy trening.</p>
+                      </article>
+                    </div>
+                  </div>
+                  <figure class="section-image">
+                    <img src="images/old/trening_grupowy.png" alt="Trening grupowy w Eternii – energia i współpraca" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
             </article>
-            <article class="tile reveal" style="transition-delay:.1s">
-              <h3>Fundamenty</h3>
-              <p>Cykl dla początkujących. Nauka techniki, oddechu i podstaw bezpiecznego poruszania się w boxie.</p>
-            </article>
-            <article class="tile reveal" style="transition-delay:.1s">
-              <h3>Motywacja grupowa</h3>
-              <p>Motywacja ćwiczeń w grupie</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <!-- Treningi specjalne -->
-      <section id="treningi-specjalne">
-        <div class="container">
-          <div class="section-head reveal"><h2>Treningi specjalne</h2><p>Treningi personalne dla osób w spektrum autyzmu</p></div>
-          <div class="offer">
-            <article class="tile reveal" style="transition-delay:.05s">
-              <h3>Mobility / Zdrowy kręgosłup</h3>
-              <p>Popraw mobilność, stabilność i komfort na co dzień.</p>
-            </article>
-            <article class="tile reveal" style="transition-delay:.1s">
-              <h3>Przygotowanie motoryczne</h3>
-              <p>Siła, szybkość i prewencja urazów dla sportowców amatorów.</p>
-            </article>
-            <article class="tile reveal" style="transition-delay:.15s">
-              <h3>Cross Teens</h3>
-              <p>Bezpieczny, rozwijający trening dla młodzieży 12–17 lat.</p>
+            <article class="training-card reveal" id="treningi-specjalne" style="transition-delay:.12s">
+              <button class="training-toggle" aria-expanded="false">
+                <div>
+                  <h3>Treningi specjalne</h3>
+                  <p>Formy uzupełniające: mobilność, przygotowanie motoryczne i zajęcia dla młodzieży.</p>
+                </div>
+                <span class="chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6.3 9.3a1 1 0 011.4 0L12 13.6l4.3-4.3a1 1 0 111.4 1.4l-5 5a1 1 0 01-1.4 0l-5-5a1 1 0 010-1.4z"/></svg>
+                </span>
+              </button>
+              <div class="training-body">
+                <div class="training-layout">
+                  <div>
+                    <p>Wybierz format dopasowany do Twoich potrzeb — od mobilności i zdrowego kręgosłupa po przygotowanie motoryczne. Prowadzimy także zajęcia personalne dla osób w spektrum autyzmu oraz <strong>Cross Teens</strong> dla młodzieży.</p>
+                    <div class="training-points">
+                      <article class="tile">
+                        <h3>Mobility / Zdrowy kręgosłup</h3>
+                        <p>Popraw mobilność, stabilność i komfort na co dzień.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Przygotowanie motoryczne</h3>
+                        <p>Siła, szybkość i prewencja urazów dla sportowców amatorów.</p>
+                      </article>
+                      <article class="tile">
+                        <h3>Cross Teens</h3>
+                        <p>Bezpieczny, rozwijający trening dla młodzieży 12–17 lat.</p>
+                      </article>
+                    </div>
+                  </div>
+                  <figure class="section-image">
+                    <img src="images/old/3.jpg" alt="Trening specjalny w Eternii – praca nad techniką" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
             </article>
           </div>
         </div>
@@ -472,7 +537,7 @@
               </article>
             </div>
             <figure class="reveal" style="transition-delay:.1s">
-              <img src="images/2.jpg" alt="Jak zacząć w Eternii – zajęcia wprowadzające START UP" loading="lazy" />
+              <img src="images/old/2.jpg" alt="Jak zacząć w Eternii – zajęcia wprowadzające START UP" loading="lazy" />
             </figure>
           </div>
         </div>
@@ -543,7 +608,7 @@
           <div class="coaches">
             <article class="coach reveal" style="transition-delay:.15s">
               <figure>
-                <img src="images/coach_Mateusz.jpg" alt="Trener Mateusz – Eternia" loading="lazy" />
+                <img src="images/old/coach_Mateusz.jpg" alt="Trener Mateusz – Eternia" loading="lazy" />
               </figure>
               <div class="body">
                 <h3>Mateusz</h3>
@@ -552,7 +617,7 @@
             </article>
             <article class="coach reveal" style="transition-delay:.05s">
               <figure>
-                <img src="images/coach_Patrycja.png" alt="Trenerka Patrycja – Eternia" loading="lazy" />
+                <img src="images/old/coach_Patrycja.png" alt="Trenerka Patrycja – Eternia" loading="lazy" />
               </figure>
               <div class="body">
                 <h3>Patrycja</h3>
@@ -561,7 +626,7 @@
             </article>
             <article class="coach reveal" style="transition-delay:.05s">
               <figure>
-                <img src="images/coach_Kasia.png" alt="Trenerka Patrycja – Eternia" loading="lazy" />
+                <img src="images/old/coach_Kasia.png" alt="Trenerka Patrycja – Eternia" loading="lazy" />
               </figure>
               <div class="body">
                 <h3>Kasia</h3>
@@ -570,7 +635,7 @@
             </article>
             <article class="coach reveal" style="transition-delay:.1s">
               <figure>
-                <img src="images/coach_Marcin.jpg" alt="Trener Marcin – Eternia" loading="lazy" />
+                <img src="images/old/coach_Marcin.jpg" alt="Trener Marcin – Eternia" loading="lazy" />
               </figure>
               <div class="body">
                 <h3>Marcin</h3>
@@ -579,7 +644,7 @@
             </article>
             <article class="coach reveal" style="transition-delay:.15s">
               <figure>
-                <img src="images/coach_Mariusz.jpg" alt="Trener Mariusz – Eternia" loading="lazy" />
+                <img src="images/old/coach_Mariusz.jpg" alt="Trener Mariusz – Eternia" loading="lazy" />
               </figure>
               <div class="body">
                 <h3>Mariusz</h3>
@@ -594,10 +659,10 @@
         <div class="container">
           <div class="section-head reveal"><h2>Galeria</h2><p>Zobacz, jak wygląda trening w Eternii.</p></div>
           <div class="gallery">
-            <figure class="reveal" style="transition-delay:.05s"><img src="images/1.jpg" alt="Trening funkcjonalny – zdjęcie 1" loading="lazy" /></figure>
-            <figure class="reveal" style="transition-delay:.1s"><img src="images/2.jpg" alt="Praca w grupie – zdjęcie 2" loading="lazy" /></figure>
-            <figure class="reveal" style="transition-delay:.15s"><img src="images/3.jpg" alt="Sprzęt i strefa ciężarowa – zdjęcie 3" loading="lazy" /></figure>
-            <figure class="reveal" style="transition-delay:.2s"><img src="images/4.jpg" alt="Atmosfera w klubie – zdjęcie 4" loading="lazy" /></figure>
+            <figure class="reveal" style="transition-delay:.05s"><img src="images/old/1.jpg" alt="Trening funkcjonalny – zdjęcie 1" loading="lazy" /></figure>
+            <figure class="reveal" style="transition-delay:.1s"><img src="images/old/2.jpg" alt="Praca w grupie – zdjęcie 2" loading="lazy" /></figure>
+            <figure class="reveal" style="transition-delay:.15s"><img src="images/old/3.jpg" alt="Sprzęt i strefa ciężarowa – zdjęcie 3" loading="lazy" /></figure>
+            <figure class="reveal" style="transition-delay:.2s"><img src="images/old/4.jpg" alt="Atmosfera w klubie – zdjęcie 4" loading="lazy" /></figure>
           </div>
         </div>
       </section>
@@ -613,7 +678,7 @@
               <p><strong>Email:</strong><br/><a class="link" href="mailto:info@eternia.com.pl">info@eternia.com.pl</a></p>
               <div class="social-cta">
                 <a class="map-link" href="https://maps.app.goo.gl/jK32jbr4RkRur22m6" target="_blank" rel="noopener" aria-label="Pokaż na mapie">
-                  <img class="icon" src="images/globe.svg" alt="" aria-hidden="true" />
+                  <img class="icon" src="images/old/globe.svg" alt="" aria-hidden="true" />
                   <span>Mapa</span>
                 </a>
                 <a class="instagram" href="https://www.instagram.com/eternia_wroclaw/" target="_blank" rel="noopener" aria-label="Instagram Eternia">
@@ -627,7 +692,7 @@
               </div>
             </div>
             <figure class="section-image reveal" style="transition-delay:.05s">
-            <img src="images/zapisz_sie.jpg" alt="Trening personalny w Eternii – indywidualna praca 1:1" loading="lazy" />
+            <img src="images/old/zapisz_sie.jpg" alt="Trening personalny w Eternii – indywidualna praca 1:1" loading="lazy" />
           </figure>
           
           </div>
@@ -638,7 +703,7 @@
     <footer>
       <div class="foot">
         <div class="brand">
-          <img src="images/logo.jpg" alt="Logo Eternia" />
+          <img src="images/old/logo.jpg" alt="Logo Eternia" />
           <span>© <span id="year"></span> Eternia — Wrocław</span>
         </div>
         <div class="social">
@@ -678,6 +743,44 @@
           window.scrollTo({ top: y, behavior: 'smooth' });
           menu.classList.remove('open');
           burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Training accordion
+      const trainingCards = Array.from(document.querySelectorAll('.training-card'));
+      const setTrainingState = (card, open) => {
+        card.classList.toggle('open', open);
+        card.querySelector('.training-toggle')?.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      const openTrainingCard = (card) => {
+        trainingCards.forEach(c => setTrainingState(c, c === card));
+      };
+
+      trainingCards.forEach(card => {
+        const toggle = card.querySelector('.training-toggle');
+        toggle?.addEventListener('click', () => {
+          const isOpen = card.classList.contains('open');
+          if (isOpen) {
+            setTrainingState(card, false);
+          } else {
+            openTrainingCard(card);
+          }
+        });
+      });
+
+      const openTrainingFromHash = (hash) => {
+        if (!hash.startsWith('#treningi-')) return;
+        const target = document.querySelector(hash);
+        if (target && target.classList.contains('training-card')) {
+          openTrainingCard(target);
+        }
+      };
+
+      if (window.location.hash) { openTrainingFromHash(window.location.hash); }
+      document.querySelectorAll('a[href^="#treningi-"]').forEach(a => {
+        a.addEventListener('click', () => {
+          const id = a.getAttribute('href');
+          if (id) openTrainingFromHash(id);
         });
       });
 

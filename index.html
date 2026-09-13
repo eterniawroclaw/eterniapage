@@ -257,6 +257,9 @@
       .training-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; align-items: center; }
       .training-layout .section-image { margin: 0; }
       .training-layout .section-image img { height: 100%; }
+      .training-card.open#treningi-mobility .training-body { max-height: 7000px; }
+      .yoga-image img { aspect-ratio: 3 / 4; object-position: center top; }
+      .yoga-quote { margin: 20px 0; padding: 14px 16px; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: rgba(125,243,192,.07); font-weight: 700; }
       .training-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
       @media (max-width: 900px) { .training-layout { grid-template-columns: 1fr; } }
 
@@ -610,33 +613,38 @@
             </article>
 
             <article class="training-card reveal" id="treningi-mobility" style="transition-delay:.08s">
-              <button class="training-toggle" aria-expanded="false">
+              <button class="training-toggle" id="treningi-mobility-toggle" aria-expanded="false" aria-controls="treningi-mobility-panel">
                 <div>
-                  <h3>Mobility (zdrowy kręgosłup)</h3>
-                  <p>Zdrowy Kręgosłup / Mobility – trening, który usprawnia całe ciało</p>
+                  <h3>YOGA Mobility</h3>
+                  <p>Joga, mobilność, stabilizacja i świadoma praca z ciałem</p>
                 </div>
                 <span class="chevron" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M6.3 9.3a1 1 0 011.4 0L12 13.6l4.3-4.3a1 1 0 111.4 1.4l-5 5a1 1 0 01-1.4 0l-5-5a1 1 0 010-1.4z"/></svg>
                 </span>
               </button>
-              <div class="training-body">
+              <div class="training-body" id="treningi-mobility-panel" role="region" aria-labelledby="treningi-mobility-toggle" inert>
                 <div class="training-layout">
                   <div>
-                    <p>Zajęcia Zdrowy Kręgosłup / Mobility to spokojny, świadomy trening nastawiony na poprawę ruchomości, wzmocnienie mięśni stabilizujących oraz odciążenie kręgosłupa. Pracujemy nad mobilnością, elastycznością i jakością ruchu, dzięki czemu ciało staje się lżejsze, bardziej swobodne i mniej podatne na ból.</p>
-                    <p>Ćwiczenia są bezpieczne, techniczne i dopasowane do potrzeb osób w każdym wieku i na każdym poziomie sprawności. Pod okiem trenera uczysz się prawidłowego oddychania, pracy z ciałem i kontroli nad ruchem. To idealny wybór dla osób, które dużo siedzą, czują sztywność, mają przeciążenia lub po prostu chcą zadbać o swoje zdrowie i dobre samopoczucie.</p>
-                    <p>To trening, po którym poczujesz realną ulgę, poprawę zakresów i większą świadomość własnego ciała.</p>
-                    <p>Co dają zajęcia Zdrowy Kręgosłup / Mobility?</p>
+                    <p>Jestem nauczycielką jogi z pasji. Na co dzień pracuję również jako broker ubezpieczeniowy, dlatego dobrze wiem, czym jest stres, napięcie i życie na wysokich obrotach. Joga pojawiła się w moim życiu właśnie jako sposób na odzyskanie równowagi – i z czasem stała się czymś znacznie więcej.</p>
+                    <p>Dziś uczę przede wszystkim poprzez własne doświadczenie. Pokazuję, jak świadomy ruch i oddech mogą pomóc zmniejszyć napięcia i dolegliwości bólowe, poprawić sprawność i mobilność ciała, a jednocześnie wpływać na układ nerwowy, poczucie relaksu i większej lekkości w codziennym życiu.</p>
+                    <p>Ukończyłam studia podyplomowe z zakresu jogi oraz szkołę prowadzoną przez nauczycieli z Indii. Czerpię z jogi jako wielowiekowej filozofii, ale przekładam ją na potrzeby współczesnego człowieka Zachodu – naszego siedzącego trybu życia, stresu, przeciążeń i bodźców.</p>
+                    <blockquote class="yoga-quote">Moim celem nie jest to, żeby potrafić zrobić bardziej skomplikowaną pozycję. Chcę, żeby dzięki jodze lepiej funkcjonowało Twoje ciało i żebyś lepiej czuł się w swoim życiu.</blockquote>
+                    <p><strong>YOGA Mobility</strong> to połączenie jogi, mobilności, stabilizacji i świadomej pracy z ciałem.</p>
+                    <p>Podczas zajęć pracujemy nad:</p>
                     <ul class="training-list">
-                      <li>Mniejsze napięcia i bóle w odcinku lędźwiowym, piersiowym i szyjnym</li>
-                      <li>Lepszą ruchomość, elastyczność i zakresy ruchu</li>
-                      <li>Silniejszy core i stabilizację całego ciała</li>
-                      <li>Poprawę postawy i komfortu w codziennych czynnościach</li>
-                      <li>Bezpieczne ćwiczenia prowadzone przez doświadczonego trenera</li>
-                      <li>Świadomy ruch, który procentuje w każdym innym rodzaju treningu</li>
+                      <li>ruchomością kręgosłupa – szczególnie jego płynnością i zakresem ruchu,</li>
+                      <li>mobilnością bioder i barków,</li>
+                      <li>ruchomością i stabilnością stawów,</li>
+                      <li>elastycznością mięśni i powięzi,</li>
+                      <li>siłą mięśni głębokich i stabilizacją,</li>
+                      <li>równowagą i koordynacją,</li>
+                      <li>prawidłowym wzorcem ruchu i świadomością ciała.</li>
                     </ul>
+                    <p>Regularna praktyka pomaga zmniejszyć sztywność i napięcia, poprawia zakresy ruchu i sprawia, że ciało porusza się swobodniej i bardziej efektywnie. Jest dobrym uzupełnieniem zarówno treningu siłowego i CrossFitu, jak i codziennego siedzenia czy pracy przy komputerze.</p>
+                    <p>Ale YOGA Mobility to nie tylko ciało. Oddech, koncentracja i świadomy ruch pomagają wyciszyć układ nerwowy, zmniejszyć napięcie i zakończyć trening z poczuciem większej lekkości.</p>
                   </div>
-                  <figure class="section-image">
-                    <img src="images/11.jpeg" alt="Trening grupowy w Eternii – energia i współpraca" loading="lazy" />
+                  <figure class="section-image yoga-image">
+                    <img src="images/yoga-mobility.png" alt="Portret nauczycielki YOGA Mobility w Eternii" loading="lazy" />
                   </figure>
                 </div>
               </div>
@@ -1088,11 +1096,22 @@
       const setTrainingState = (card, open) => {
         card.classList.toggle('open', open);
         card.querySelector('.training-toggle')?.setAttribute('aria-expanded', open ? 'true' : 'false');
+        const body = card.querySelector('.training-body');
+        if (body) {
+          body.inert = !open;
+          body.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
       };
       const openTrainingCard = (card) => setTrainingState(card, true);
 
       trainingCards.forEach(card => {
         const toggle = card.querySelector('.training-toggle');
+        const body = card.querySelector('.training-body');
+        if (body) {
+          const open = card.classList.contains('open');
+          body.inert = !open;
+          body.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
         toggle?.addEventListener('click', () => {
           const isOpen = card.classList.contains('open');
           if (isOpen) {
